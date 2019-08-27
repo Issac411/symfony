@@ -1,0 +1,28 @@
+{%  extends 'base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+    <div>
+        {#
+        {% if not is_granted('ROLE_USER') %}
+        app.user
+        #}
+        <form method="post" action="{{ path('user_login') }}">
+            <div>
+                <label for="username">username</label>
+                <input type="text" id="username" name="_username" value="{{ lastusername }}">
+            </div>
+            <div>
+                <label for="password">password</label>
+                <input type="password" id="password" name="_password" value="">
+                <input type="checkbox" id="remember_me" name="_remember_me" checked/>
+                <label for="remember_me">Maintenir la connexion</label>
+            </div>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" >
+            <div>
+                <button type="submit">Se connecter</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
